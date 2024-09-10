@@ -751,9 +751,3 @@ filter: gray;
 filter: none;
 transition: 1s ease;
 }
-
-@media (max-width: 768px) {
-    #about .scroll-down {
-        display: none; /* Hide the second arrow on small screens */
-    }
-}
