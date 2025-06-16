@@ -1,5 +1,6 @@
 ## Luke-Henderson-Dev ##
-Repository of the code for my static developer website.
+
+Simple Developer Portfolio website to demonstrate my use of HTML and Bootstrap.CSS to make a pleasing frontend webapp design to show off my previous work.
 
 ## License ##
 
