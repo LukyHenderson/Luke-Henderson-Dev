@@ -18,6 +18,8 @@ function heroTypeEffect() {
             heroIndex++;
         } else {
             isHeroDeleting = true;
+            setTimeout(heroTypeEffect, 2000); // <-- 2-second pause before deletion
+            return; // exit early so it doesn’t immediately continue
         }
     }
 
@@ -37,5 +39,6 @@ window.addEventListener('load', function() {
         window.scrollTo(0, 0);
     }, 0);  // A timeout of 0 ensures it runs after the load event
 });
+
 
 
