@@ -1,5 +1,5 @@
 const heroTypeWriter = document.getElementById('hero-typewriter-text');
-const heroText = 'Automation Developer @ Cleardata.';
+const heroText = 'Full Stack Developer & MSc Datascience and AI student @ Newcastle University.';
 
 let heroIndex = 0;
 let isHeroDeleting = false;
@@ -37,4 +37,5 @@ window.addEventListener('load', function() {
         window.scrollTo(0, 0);
     }, 0);  // A timeout of 0 ensures it runs after the load event
 });
+
 
