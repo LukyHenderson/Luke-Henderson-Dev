@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Luke Henderson</title>
+<meta content="Luke Henderson, Full Stack Developer | Data Scientist. MSc Data Science and AI student at Newcastle University." name="description"/>
+<style>
+:root {
+  /* Pastel theme (personal palette) */
+  --cta-blue: rgba(201, 216, 222, 0.85);
+  --hover-green: #CEF8E8;
+
+  /* Text */
+  --text: #000000;
+  --name-blue: #1D4258;
+
+  /* Surfaces */
+  --bg: #ffffff;
+  --bg-alt: rgba(255, 255, 255, 0.92);
+  --card-bg: rgba(255, 255, 255, 0.92);
+
+  /* Borders + shadows */
+  --border: rgba(0, 0, 0, 0.10);
+  --input-border: rgba(0, 0, 0, 0.14);
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 10px 25px rgba(0, 0, 0, 0.04);
+  --radius: 1.25rem;
+}
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 72% 12%, rgba(201, 216, 222, 0.60) 0%, rgba(201, 216, 222, 0) 60%),
+        radial-gradient(circle at 20% 62%, rgba(206, 248, 232, 0.55) 0%, rgba(206, 248, 232, 0) 60%),
+        linear-gradient(180deg,
+          #ffffff 0%,
+          rgba(255, 255, 255, 0.92) 18%,
+          rgba(206, 248, 232, 0.55) 62%,
+          #CEF8E8 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+
+
+    /* Accessibility */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0.75rem;
+      z-index: 9999;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .skip-link:focus { left: 0.75rem; }
+
+    a { color: #000000; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(44, 111, 119, 0.55);
+      outline-offset: 3px;
+      border-radius: 0.75rem;
+    }
+
+    header {
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .site-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      min-width: 12rem;
+    }
+
+    .site-logo .name {
+      margin: 0;
+      font-weight: 780;
+      letter-spacing: 0.04em;
+      font-size: 1.2rem;
+      color: #000000;
+      line-height: 1;
+    }
+
+    .site-logo .role {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #000000;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.92rem;
+      white-space: nowrap;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      color: #000000;
+      text-decoration: none;
+      font-weight: 650;
+      padding: 0.35rem 0.5rem;
+      border-radius: 0.75rem;
+      transition: background 0.18s ease, transform 0.12s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: #000000;
+      text-decoration: none;
+      background: var(--hover-green);
+      transform: translateY(-1px);
+    }
+
+.nav-link.primary {
+      background: var(--cta-blue);
+      color: #000000;
+      border: 1px solid rgba(0, 0, 0, 0.10);
+    }
+    .nav-link.primary:hover,
+    .nav-link.primary:focus-visible {
+      background: var(--hover-green);
+      color: #000000;
+      transform: translateY(-1px);
+    }
+
+main { flex: 1; }
+
+    .section { padding: 3rem 1.5rem; }
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* Text safeguard */
+    h1, h2, h3, h4, h5, h6, p, li, small, span, label { color: #000000; }
+    /* Only exception: the hero name */
+    .hero-title span { color: var(--name-blue); white-space: nowrap; }
+
+    /* Hero */
+    .hero { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 2.6vw + 1rem, 3.1rem);
+      line-height: 1.05;
+      margin: 0 0 0.9rem;
+      color: #000000;
+      letter-spacing: -0.02em;
+    }
+    .hero-title span { color: var(--name-blue); white-space: nowrap; }
+
+    #hero-typewriter-text {
+      margin: 0 0 1.25rem;
+      font-size: 1.05rem;
+      color: #000000;
+      max-width: 44rem;
+      line-height: 1.55;
+      position: relative;
+    opacity: 0.84;
+    }
+
+    #hero-typewriter-text.typewriter::after {
+      content: " |";
+      color: #000000;
+      animation: blink 1s infinite;
+      animation-timing-function: step-end;
+      margin-left: 0.1rem;
+    }
+
+    @keyframes blink {
+      0%, 75%, 100% { opacity: 1; }
+      25% { opacity: 0; }
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pill {
+      padding: 0.32rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #000000;
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .scroll-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      color: #000000;
+      font-weight: 650;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .scroll-hint .chev {
+      display: inline-flex;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
+      animation: bounce 2.2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-6px); }
+      60% { transform: translateY(-3px); }
+    }
+
+    /* Cards + buttons */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.75rem 1.05rem;
+      border-radius: 0.85rem;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #ffffff;
+      color: #000000;
+      font-weight: 780;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+    }
+
+    .btn:hover {
+      background: var(--hover-green);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn:active { transform: translateY(0); }
+
+    /* Call-to-action buttons */
+    .btn.cta {
+      background: var(--cta-blue);
+      border-color: rgba(0, 0, 0, 0.10);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn.cta:hover {
+      background: var(--hover-green);
+    }
+
+    /* Secondary buttons keep the same white style (class retained for markup clarity) */
+    .btn.secondary {
+      background: #ffffff;
+    }
+    .btn.secondary:hover {
+      background: var(--hover-green);
+    }
+/* Profile card */
+    .profile-card { padding: 1.5rem 1.5rem 1.35rem; }
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      flex: 0 0 auto;
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;}
+.profile-meta h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+      color: #000000;
+    }
+    .profile-meta p {
+      margin: 0.1rem 0 0;
+      font-size: 0.92rem;
+      color: #000000;
+      line-height: 1.35;
+    }
+
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.9rem 0 0;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.92rem;
+      color: #000000;
+    }
+    .mini-list li::before { content: "• "; color: #000000; }
+
+    /* Utilities */
+    .muted { color: #000000; opacity: 0.78; }
+    .muted-strong { color: #000000; opacity: 0.88; }
+
+    /* About */
+    .section-title {
+      font-size: 0.95rem;
+      color: #000000;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin: 0 0 0.7rem;
+    opacity: 0.78;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+      color: #000000;
+      line-height: 1.7;
+    opacity: 0.88;
+    }
+
+    .about-figure { margin: 0; }
+    .about-figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 1.1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);}
+/* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .project-card {
+      padding: 1.4rem 1.35rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      min-height: 100%;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: #000000;
+      letter-spacing: -0.01em;
+    }
+
+    .project-media {
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    .project-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .project-summary {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #000000;
+      line-height: 1.65;
+    opacity: 0.88;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: auto;
+      padding-top: 0.3rem;
+    }
+
+    .project-list-description {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #000000;
+      font-weight: 700;
+    }
+
+
+    /* Experience (logo wall) */
+    .logo-wall {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.05rem;
+      margin-top: 1.25rem;
+      align-items: center;
+    }
+
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem 1.25rem;
+      border-radius: 1.05rem;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow-sm);
+      min-height: 132px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: background 220ms ease, border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .logo-item:hover,
+    .logo-item:focus-visible {
+      background: #CEF8E8;
+      border-color: rgba(194, 229, 205, 0.95);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      outline: none;
+    }
+
+    .logo-item:active { transform: translateY(0px); }
+
+    .logo-item img {
+      width: 100%;
+      max-width: 320px;
+      max-height: 96px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+      padding: 1rem 1.5rem 1.75rem;
+      font-size: 0.85rem;
+      color: #000000;
+      border-top: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.75);
+      flex-wrap: wrap;
+    opacity: 0.85;
+    }
+
+    footer a {
+      color: #000000;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.75rem;
+      transition: background 0.18s ease, transform 0.12s ease;
+    }
+
+    footer a svg path { fill: #000000; transition: fill 0.15s ease; }
+    footer a:hover { color: #000000; text-decoration: none; background: var(--hover-green);       transform: translateY(-1px);
+    }
+    footer a:hover svg path { fill: #000000; }
+
+    /* Responsive */
+    @media (max-width: 920px) {
+      .shell { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+      .site-logo { min-width: auto; flex-direction: column; align-items: flex-start; gap: 0.15rem; }
+    }
+
+    @media (max-width: 780px) {
+      .about-grid { grid-template-columns: minmax(0, 1fr); }
+      .projects-grid { grid-template-columns: minmax(0, 1fr); }
+      .logo-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .logo-item { min-height: 120px; }
+      .logo-item img { max-height: 92px; }
+      header { padding: 1rem 1.1rem; }
+      .section { padding: 2.25rem 1.1rem; }
+    }
+
+    @media (max-width: 520px) {
+      .logo-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .logo-item { padding: 0.95rem; min-height: 118px; }
+      .logo-item img { max-height: 86px; }
+
+      .hero-title { letter-spacing: -0.01em; }
+      .main-nav { font-size: 0.86rem; }
+      .btn { width: 100%; }
+      .btn-row { gap: 0.55rem; }
+      .scroll-hint { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+      #hero-typewriter-text.typewriter::after { content: ""; }
+      .scroll-hint .chev { animation: none; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<!-- Header -->
+<header>
+<div class="header-inner">
+<a aria-label="Luke Henderson home" class="site-logo" href="#top">
+<p class="name">Luke Henderson</p>
+<p class="role">Full Stack Developer | Data Scientist</p>
+</a>
+<nav aria-label="Primary" class="main-nav">
+<a class="nav-link" href="#about">About</a>
+<a class="nav-link" href="#projects">Projects</a>
+<a class="nav-link" href="#experience">Experience</a>
+<a class="nav-link" download="" href="assets/Luke_Henderson_CV.pdf">Resume</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<!-- Hero -->
+<section class="section hero" id="top">
+<div class="container">
+<div class="shell">
+<div>
+<h1 class="hero-title">My Name is<br><span>Luke Henderson!</span></h1>
+<p class="typewriter" id="hero-typewriter-text">Full-Stack Dev &amp; Founder @ NeuroMoney.</p>
+<div aria-label="Highlights" class="hero-pills">
+<span class="pill">Full Stack</span>
+<span class="pill">Data Science &amp; AI</span>
+<span class="pill">Cloud &amp; DevOps</span>
+<span class="pill">NeuroMoney</span>
+</div>
+</div>
+<aside aria-label="Quick links" class="card profile-card">
+<div class="profile-top">
+<div class="avatar">
+<img alt="Portrait of Luke Henderson" loading="lazy" src="assets/portrait.jpg"/>
+</div>
+<div class="profile-meta">
+<h2>Luke Henderson</h2>
+<p>Full Stack Developer<br/>MSc Data Science &amp; AI (Newcastle)<br/>Ba(Hons) Business Management (Northumbria)</p>
+</div>
+</div>
+<ul class="mini-list">
+<li>Web Development, Cloud Solutions, Business Management, Automation Solutions, Datascience + AI Solutions</li>
+<li>Python, Django, FastAPI, SQL, MySQL, MSSQL, R</li>
+<li>Google Cloud, Azure, DigitalOcean, GitHub, Docker</li>
+</ul>
+<div class="btn-row">
+  <a class="btn cta" download="" href="assets/Luke_Henderson_CV.pdf">Resume</a>
+  <a class="btn secondary" href="https://www.linkedin.com/in/luke-henderson-dev/" rel="noopener" target="_blank">LinkedIn</a>
+  <a class="btn secondary" href="https://github.com/LukyHenderson" rel="noopener" target="_blank">GitHub</a>
+  <a aria-label="Email Luke" class="btn secondary" href="mailto:luky.henderson@gmail.com">Email</a>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="section" id="about">
+<div class="container">
+<p class="section-title">About Me</p>
+<div class="card">
+<div class="about-grid">
+<div class="about-text">
+<p>I’m Luke Henderson, a Full Stack Developer and current MSc student in Data Science and Artificial Intelligence at Newcastle University, following my 2:1 in Business Management from Northumbria University. My journey blends a strong technical foundation with business acumen, having spent several years developing automation systems, web applications, and cloud-based solutions. Professionally, I’ve worked with technologies like Python, Django, FastAPI, MySQL, and cloud platforms such as Google Cloud, Azure, and DigitalOcean. My experience spans from building automated data pipelines at Cleardata UK to integrating REST and GraphQL APIs at Zynk Software, all while promoting DevOps and Agile best practices to deliver efficient, scalable solutions.</p>
+<p>Beyond work and study, I’m endlessly curious, a trait that spills into my love for ancient history. Whether it’s the strategies of Rome, the resilience of Carthage, or the mysticism of Ancient Briton, I find inspiration in how past civilizations shaped technology, trade, and governance. This fascination often influences how I approach problem-solving: strategic, structured, and deeply analytical.</p><p>A quieter passion of mine is cultivating bonsai trees and caring for succulent plants. I love building small <em>indoor penjing landscapes</em> inspired by ancient gardens, miniature scenes that balance structure, patience, and storytelling. It’s a hobby that blends my fascination with history (how spaces were designed to guide movement, mood, and meaning) with the craft of shaping living trees over time. In a funny way, it mirrors software through the thoughtful pruning, long-term planning, and small improvements that compound over time.</p>
+<p>I’m also a lifelong Star Wars fan. Finding it as an excellent escape to delve into and escape following a heavy day.</p>
+<p>I’m currently developing <em>NeuroMoney</em>, a Fintech web application designed to empower neurodiverse adults in managing their finances. This passion project combines my technical expertise, entrepreneurial mindset, and commitment to inclusive, purpose-driven innovation. You can find this at <a href="https://neuromoney.io" rel="noopener" target="_blank">NeuroMoney.io</a>.</p>
+</div>
+<figure class="about-figure">
+<img alt="About Me Photo" loading="lazy" src="assets/portrait.jpg"/>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section (no flip cards) -->
+<section class="section" id="projects">
+<div class="container">
+<p class="section-title">My Projects</p>
+<div class="projects-grid">
+<article class="card project-card">
+<h3>NeuroMoney</h3>
+<div class="project-media">
+<img alt="New Project Image" loading="lazy" src="assets/Capture2.PNG"/>
+</div>
+<p class="project-summary">Fintech application designed for neurodiverse adults. created with a HTML, CSS and JavaScript frontend, with a Google Cloud MySQL, Python and FastAPI(python) backend. This app is currently a work in progress. The idea is to help neurodiverse people take control of their spending habits, to help combat negative impulsive spending behaviours that plague up to 50% of the neurodiverse population, compared to 12% of the general population.</p>
+<div class="project-actions">
+<a class="btn cta" href="https://neuromoney.io" rel="noopener" target="_blank">Visit NeuroMoney.io</a>
+</div>
+</article>
+<article class="card project-card">
+<h3>Developer Portfolio</h3>
+<div class="project-media">
+<img alt="New Project Image" loading="lazy" src="assets/Capture.PNG"/>
+</div>
+<p class="project-summary">My personal developer portfolio website (that youre currently on!) built entirely from scratch using HTML, CSS, and JavaScript. The site domain is managed through Google Cloud and is hosted on DigitalOcean using their App Platform service. The site highlights my key projects and skills aswell as a mini biography to explain more about me. The site features smooth scrolling navigation, a downloadable resume, and responsive design, with some basic aninmation and interactive elements, to ensure accessibility across devices. It offers a modern, user-friendly experience for visitors to explore my work and connect via social media or email.</p>
+<div class="project-actions">
+<a class="btn secondary" href="#top">You’re here</a>
+<a class="btn secondary" href="https://github.com/LukyHenderson/Luke-Henderson-Dev" rel="noopener" target="_blank">GitHub</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+
+<!-- Experience Section -->
+<section class="section" id="experience">
+  <div class="container">
+    <p class="section-title">Experience</p>
+    <div class="card">
+      <p class="muted">Previously worked with</p>
+      <div class="logo-wall" aria-label="Employer logos">
+        <a class="logo-item" href="https://www.akzonobel.com/en" target="_blank" rel="noopener noreferrer" aria-label="Visit AkzoNobel"><img alt="AkzoNobel logo" loading="lazy" src="assets/akzonobel.png"/></a>
+        <a class="logo-item" href="https://phlgroup.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit PHL Group (Vocare)"><img alt="Vocare logo" loading="lazy" src="assets/Vocare.png"/></a>
+        <a class="logo-item" href="https://phlgroup.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit PHL Group (Totally)"><img alt="Totally Group logo" loading="lazy" src="assets/Totally.png"/></a>
+        <a class="logo-item" href="https://www.cleardatagroup.co.uk/?ppc_keyword=cleardata&gad_source=1&gad_campaignid=10094062214&gbraid=0AAAAAD9N9ZR4HRH1cd2lHnaqXnky0XP48&gclid=CjwKCAiAkbbMBhB2EiwANbxtbZDyzZUECnN1TMf88XiHMiy8_TVRCZnhk4-Mmwe0EV3xzMulNSgAShoCotMQAvD_BwE" target="_blank" rel="noopener noreferrer" aria-label="Visit ClearData Group"><img alt="ClearData logo" loading="lazy" src="assets/Cleardata.png"/></a>
+        <a class="logo-item" href="https://zynk.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Zynk"><img alt="Zynk logo" loading="lazy" src="assets/Zynk.webp"/></a>
+        <a class="logo-item" href="https://neuromoney.io" target="_blank" rel="noopener noreferrer" aria-label="Visit NeuroMoney"><img alt="NeuroMoney logo" loading="lazy" src="assets/Neuromoney-applogo-contrast.png"/></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<!-- Footer -->
+<footer>
+<span>© 2024 Luke Henderson</span>
+<span aria-hidden="true">•</span>
+<a aria-label="LinkedIn" href="https://www.linkedin.com/in/luke-henderson-dev/" rel="noopener" target="_blank">
+<svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"></path>
+</svg>
+      LinkedIn
+    </a>
+<span aria-hidden="true">•</span>
+<a aria-label="Email" href="mailto:luky.henderson@gmail.com">
+<svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 21h-24v-18h24v18zm-23-16.477v15.477h22v-15.477l-10.999 10-11.001-10zm21.089-.523h-20.176l10.088 9.171 10.088-9.171z"></path>
+</svg>
+      Email
+    </a>
+<span aria-hidden="true">•</span>
+<a aria-label="GitHub" href="https://github.com/LukyHenderson" rel="noopener" target="_blank">
+<svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20">
+<path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.58 0-.287-.011-1.049-.017-2.057-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.73.083-.73 1.205.084 1.84 1.238 1.84 1.238 1.07 1.835 2.807 1.305 3.492.998.108-.775.42-1.305.763-1.605-2.665-.305-5.467-1.333-5.467-5.93 0-1.31.469-2.381 1.236-3.22-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.004-.404 1.02.005 2.047.138 3.004.404 2.292-1.553 3.298-1.23 3.298-1.23.654 1.653.242 2.874.119 3.176.77.839 1.236 1.91 1.236 3.22 0 4.61-2.807 5.62-5.479 5.92.43.372.814 1.103.814 2.222 0 1.606-.015 2.903-.015 3.293 0 .322.192.696.799.579C20.565 21.797 24 17.299 24 12c0-6.627-5.373-12-12-12z"></path>
+</svg>
+      GitHub
+    </a>
+</footer>
+<script>
+    (function () {
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const el = document.getElementById('hero-typewriter-text');
+      if (!el) return;
+
+      const heroText = 'Full-Stack Dev & Founder @ NeuroMoney.';
+
+      // If reduced motion, just show the final text.
+      if (prefersReducedMotion) {
+        el.classList.remove('typewriter');
+        el.textContent = heroText;
+        return;
+      }
+
+      let i = 0;
+      let deleting = false;
+
+      function tick() {
+        el.textContent = heroText.substring(0, i);
+
+        if (deleting) {
+          if (i > 0) i--;
+          else deleting = false;
+        } else {
+          if (i < heroText.length) i++;
+          else {
+            deleting = true;
+            setTimeout(tick, 1800);
+            return;
+          }
+        }
+
+        setTimeout(tick, deleting ? 45 : 85);
+      }
+
+      tick();
+
+      // Remove hash on load (keeps URLs clean if the user navigates via anchors).
+      window.addEventListener('load', function () {
+        if (window.location.hash) {
+          window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        window.scrollTo(0, 0);
+      });
+    })();
+  </script>
+</body>
+</html>
