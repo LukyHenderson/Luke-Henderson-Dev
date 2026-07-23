@@ -128,36 +128,28 @@
   --hover-blue: #DCEAF2;
   --text: #000000;
   --name-blue: #1D4258;
-  --bg: #ffffff;
-  --bg-alt: rgba(255, 255, 255, 0.92);
-  --card-bg: rgba(255, 255, 255, 0.92);
-  --border: rgba(0, 0, 0, 0.10);
-  --input-border: rgba(0, 0, 0, 0.14);
-  --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
-  --shadow-sm: 0 10px 25px rgba(0, 0, 0, 0.04);
+  --bg: #f4f7f9;
+  --bg-alt: #ffffff;
+  --card-bg: #ffffff;
+  --border: rgba(29, 66, 88, 0.108);
+  --input-border: rgba(29, 66, 88, 0.18);
+  --shadow: 0 18px 46px rgba(29, 66, 88, 0.117);
+  --shadow-sm: 0 8px 24px rgba(29, 66, 88, 0.081);
+  --shadow-hover: 0 22px 54px rgba(29, 66, 88, 0.153);
   --radius: 1.25rem;
 }
 * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body{
-      margin:0;
-      min-height:100vh;
+    body {
+      margin: 0;
+      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        background:
-          radial-gradient(
-            circle at 72% 10%,
-            rgba(201, 216, 222, 0.82) 0%,
-            rgba(201, 216, 222, 0.42) 34%,
-            rgba(201, 216, 222, 0) 66%
-          ),
-          linear-gradient(
-            180deg,
-            #f5f8fa 0%,
-            #eaf1f4 34%,
-            #edf3f5 68%,
-            #e4edf1 100%
-          );
+      background: #f4f7f9;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     .skip-link {
       position: absolute;
       left: -9999px;
@@ -183,13 +175,13 @@
     header {
       padding: 1.1rem 1.5rem;
       border-bottom: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(12px) saturate(160%);
-      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px) saturate(150%);
+      -webkit-backdrop-filter: blur(12px) saturate(150%);
       position: sticky;
       top: 0;
       z-index: 10;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 8px 26px rgba(29, 66, 88, 0.108);
     }
     .header-inner {
       max-width: 1040px;
@@ -314,7 +306,8 @@ main { flex: 1; }
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #000000;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 12px rgba(29, 66, 88, 0.063);
     }
     .scroll-hint {
       display: inline-flex;
@@ -348,7 +341,7 @@ main { flex: 1; }
       border-radius: var(--radius);
       padding: 1.6rem 1.5rem;
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.92);
     }
     .btn-row {
       display: flex;
@@ -371,18 +364,19 @@ main { flex: 1; }
       cursor: pointer;
       text-decoration: none;
       transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 18px rgba(29, 66, 88, 0.09);
     }
     .btn:hover {
       background: var(--hover-blue);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(29, 66, 88, 0.135);
       text-decoration: none;
     }
     .btn:active { transform: translateY(0); }
     .btn.cta {
       background: var(--cta-blue);
       border-color: rgba(0, 0, 0, 0.10);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 24px rgba(29, 66, 88, 0.117);
     }
     .btn.cta:hover {
       background: var(--hover-blue);
@@ -465,7 +459,15 @@ main { flex: 1; }
       height: auto;
       border-radius: 1.1rem;
       border: 1px solid var(--border);
-      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);}
+      box-shadow: 0 16px 34px rgba(29, 66, 88, 0.126);}
+    .projects-section-card {
+      padding: 1.25rem;
+    }
+
+    .projects-section-card .projects-grid {
+      margin-top: 0;
+    }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -543,8 +545,8 @@ main { flex: 1; }
     .logo-item:focus-visible {
       background: var(--hover-blue);
       border-color: rgba(29, 66, 88, 0.22);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
       outline: none;
     }
     .logo-item:active { transform: translateY(0px); }
@@ -566,9 +568,10 @@ main { flex: 1; }
       font-size: 0.85rem;
       color: #000000;
       border-top: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.75);
+      background: #ffffff;
+      box-shadow: 0 -8px 26px rgba(29, 66, 88, 0.09);
       flex-wrap: wrap;
-    opacity: 0.85;
+      opacity: 0.92;
     }
     footer a {
       color: #000000;
@@ -693,6 +696,7 @@ main { flex: 1; }
 <section class="section" id="projects">
 <div class="container">
 <p class="section-title">Projects</p>
+<div class="card projects-section-card">
 <div class="projects-grid">
 <article class="card project-card">
 <h3>NeuroMoney</h3>
@@ -713,6 +717,7 @@ main { flex: 1; }
 <a class="btn secondary" href="https://github.com/LukyHenderson/Luke-Henderson-Dev" rel="me noopener noreferrer" target="_blank">GitHub</a>
 </div>
 </article>
+</div>
 </div>
 </div>
 </section>
