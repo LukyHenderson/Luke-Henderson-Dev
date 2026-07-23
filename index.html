@@ -264,6 +264,19 @@ main { flex: 1; }
       gap: 2.5rem;
       align-items: center;
     }
+    .hero-summary-card {
+      margin-top: 2rem;
+      padding: 1.35rem 1.5rem;
+    }
+
+    .hero-summary-card p {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: #000000;
+      opacity: 0.88;
+    }
+
     .hero-title {
       font-size: clamp(2.1rem, 2.6vw + 1rem, 3.1rem);
       line-height: 1.05;
@@ -441,7 +454,7 @@ main { flex: 1; }
     }
     .about-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) minmax(210px, 240px);
       gap: 2rem;
       align-items: start;
     }
@@ -453,13 +466,21 @@ main { flex: 1; }
       line-height: 1.7;
     opacity: 0.88;
     }
-    .about-figure { margin: 0; }
+    .about-figure {
+      width: 100%;
+      max-width: 240px;
+      margin: 0;
+      justify-self: end;
+    }
+
     .about-figure img {
+      display: block;
       width: 100%;
       height: auto;
       border-radius: 1.1rem;
       border: 1px solid var(--border);
-      box-shadow: 0 16px 34px rgba(29, 66, 88, 0.126);}
+      box-shadow: 0 16px 34px rgba(29, 66, 88, 0.126);
+    }
     .projects-section-card {
       padding: 1.25rem;
     }
@@ -593,6 +614,10 @@ main { flex: 1; }
     }
     @media (max-width: 780px) {
       .about-grid { grid-template-columns: minmax(0, 1fr); }
+      .about-figure {
+        max-width: 240px;
+        justify-self: center;
+      }
       .projects-grid { grid-template-columns: minmax(0, 1fr); }
       .logo-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .logo-item { min-height: 120px; }
@@ -625,7 +650,7 @@ main { flex: 1; }
 <div class="header-inner">
 <a aria-label="Luke Henderson home" class="site-logo" href="#top">
 <p class="name">Luke Henderson</p>
-<p class="role">Full Stack Developer | Data Scientist</p>
+<p class="role">Founder & CEO</p>
 </a>
 <nav aria-label="Primary" class="main-nav">
 <a class="nav-link" href="#about">About</a>
@@ -664,13 +689,16 @@ main { flex: 1; }
 <li>GCP, Azure, DigitalOcean, GitHub, Docker & Squarespace</li>
 </ul>
 <div class="btn-row">
-  <a class="btn cta" download="" href="assets/Luke_Henderson_CV.pdf">Resume</a>
   <a class="btn secondary" href="https://www.linkedin.com/in/luke-henderson-dev/" rel="me noopener noreferrer" target="_blank">LinkedIn</a>
   <a class="btn secondary" href="https://github.com/LukyHenderson" rel="me noopener noreferrer" target="_blank">GitHub</a>
   <a aria-label="Email Luke" class="btn secondary" href="mailto:luky.henderson@gmail.com">Email</a>
 </div>
 </aside>
 </div>
+
+<section class="card hero-summary-card" aria-label="Luke Henderson summary">
+  <p>Luke Henderson is a software developer and the Founder of NeuroMoney LTD, having solo bootstrapped the project starting in April 2024. Luke has an MSc in Datascience and Artificial Intelligence from Newcastle University aswell as a Ba(hons) in Business Management from Northumbria University, having graduated in the summer of 2026. His unique journey blends a strong technical foundation with business acumen, having spent several years developing automation systems, web applications, and cloud-based solutions for a number of clients from the Data, Manufacturing and Health sectors. Professionally, Luke has worked with technologies like Python, FastAPI, MySQL, and cloud platforms such as Google Cloud, Azure, and DigitalOcean. Luke's development career started at Cleardata UK, where he spent a year following his time as a technician at Vocare &amp; TotallyGroup (now PHL Group). He then spent some time with Zynk, in a scale-up environment as the business migrated from desktop to cloud based solutions. NeuroMoney was founded in 2024 during Luke's time at Cleardata, as he, an adult with both ADHD Combined Type and ASD Level 1, was in need of a neurodiverse focused banking solution himself and unfortunately couldn't find any that worked for him. Now Luke works full time as the CEO of NeuroMoney, continuing to build accessible, customizable, modular software solutions for the adult Neurodivergent community.</p>
+</section>
 </div>
 </section>
 <!-- About Section -->
@@ -740,7 +768,7 @@ main { flex: 1; }
 </main>
 <!-- Footer -->
 <footer>
-<span>© 2024 Luke Henderson</span>
+<span>© 2026 Luke Henderson</span>
 <span aria-hidden="true">•</span>
 <a aria-label="LinkedIn" href="https://www.linkedin.com/in/luke-henderson-dev/" rel="me noopener noreferrer" target="_blank">
 <svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
