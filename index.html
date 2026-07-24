@@ -4,24 +4,24 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Luke Henderson – NeuroMoney Founder &amp; CEO</title>
-<meta content="Luke Henderson is a full stack developer, Data Science and Artificial Intelligence MSc student at Newcastle University, and founder of NeuroMoney." name="description"/>
+<meta content="Luke Henderson is a UK-based Software Developer and Businessman. Luke is also the founder & CEO of NeuroMoney LTD." name="description"/>
 <meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
 <link href="https://lukehenderson.net/" rel="canonical"/>
 <meta content="Luke Henderson" property="og:site_name"/>
 <meta content="Luke Henderson – NeuroMoney Founder &amp; CEO" property="og:title"/>
-<meta content="Luke Henderson is a full stack developer, Data Science and Artificial Intelligence MSc student at Newcastle University, and founder of NeuroMoney." property="og:description"/>
+<meta content="Luke Henderson is a UK-based Software Developer and Businessman. Luke is also the founder & CEO of NeuroMoney LTD." property="og:description"/>
 <meta content="profile" property="og:type"/>
 <meta content="https://lukehenderson.net/" property="og:url"/>
 <meta content="https://lukehenderson.net/assets/portrait.jpg" property="og:image"/>
-<meta content="Portrait of Luke Henderson, full stack developer and founder of NeuroMoney" property="og:image:alt"/>
+<meta content="Portrait of Luke Henderson, software developer and founder of NeuroMoney" property="og:image:alt"/>
 <meta content="en_GB" property="og:locale"/>
 <meta content="Luke" property="profile:first_name"/>
 <meta content="Henderson" property="profile:last_name"/>
 <meta content="summary" name="twitter:card"/>
 <meta content="Luke Henderson – NeuroMoney Founder &amp; CEO" name="twitter:title"/>
-<meta content="Luke Henderson is a full stack developer, Data Science and Artificial Intelligence MSc student at Newcastle University, and founder of NeuroMoney." name="twitter:description"/>
+<meta content="Luke Henderson is a UK-based Software Developer and Businessman. Luke is also the founder & CEO of NeuroMoney LTD." name="twitter:description"/>
 <meta content="https://lukehenderson.net/assets/portrait.jpg" name="twitter:image"/>
-<meta content="Portrait of Luke Henderson, full stack developer and founder of NeuroMoney" name="twitter:image:alt"/>
+<meta content="Portrait of Luke Henderson, software developer and founder of NeuroMoney" name="twitter:image:alt"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +31,7 @@
       "@id": "https://lukehenderson.net/#webpage",
       "url": "https://lukehenderson.net/",
       "name": "Luke Henderson – NeuroMoney Founder &amp; CEO",
-      "description": "Luke Henderson is a full stack developer, data science and artificial intelligence MSc student at Newcastle University, and founder of NeuroMoney.",
+      "description": "Luke Henderson is a UK-based Software Developer and Businessman. Luke is also the founder & CEO of NeuroMoney LTD.",
       "inLanguage": "en-GB",
       "isPartOf": {
         "@id": "https://lukehenderson.net/#website"
@@ -64,10 +64,10 @@
         "@id": "https://lukehenderson.net/assets/portrait.jpg#image",
         "url": "https://lukehenderson.net/assets/portrait.jpg",
         "contentUrl": "https://lukehenderson.net/assets/portrait.jpg",
-        "caption": "Luke Henderson, full stack developer and founder of NeuroMoney"
+        "caption": "Luke Henderson, software developer and founder of NeuroMoney"
       },
-      "jobTitle": "Full Stack Developer and Founder of NeuroMoney",
-      "description": "UK-based full stack developer, data science and artificial intelligence MSc student, and founder of NeuroMoney.",
+      "jobTitle": "Software Developer and Founder of NeuroMoney",
+      "description": "UK-based Software Developer and Businessman.",
       "worksFor": {
         "@id": "https://neuromoney.io/#organization"
       },
@@ -694,8 +694,8 @@ main { flex: 1; }
 </div>
 </aside>
 </div>
-
-<section class="card hero-summary-card" aria-label="Luke Henderson summary">
+<p class="section-title">Summary</p>
+<section class="card hero-summary-card" aria-label="Luke Henderson summary" id="summary">
   <p>Luke Henderson is a software developer and the Founder of NeuroMoney LTD, having solo bootstrapped the project starting in April 2024. Luke has an MSc in Datascience and Artificial Intelligence from Newcastle University aswell as a Ba(hons) in Business Management from Northumbria University, having graduated in the summer of 2026. His unique journey blends a strong technical foundation with business acumen, having spent several years developing automation systems, web applications, and cloud-based solutions for a number of clients from the Data, Manufacturing and Health sectors. Professionally, Luke has worked with technologies like Python, FastAPI, MySQL, and cloud platforms such as Google Cloud, Azure, and DigitalOcean. Luke's development career started at Cleardata UK, where he spent a year following his time as a technician at Vocare &amp; TotallyGroup (now PHL Group). He then spent some time with Zynk, in a scale-up environment as the business migrated from desktop to cloud based solutions. NeuroMoney was founded in 2024 during Luke's time at Cleardata, as he, an adult with both ADHD Combined Type and ASD Level 1, was in need of a neurodiverse focused banking solution himself and unfortunately couldn't find any that worked for him. Now Luke works full time as the CEO of NeuroMoney, continuing to build accessible, customizable, modular software solutions for the adult Neurodivergent community.</p>
 </section>
 </div>
@@ -795,7 +795,7 @@ main { flex: 1; }
       const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const el = document.getElementById('hero-typewriter-text');
       if (!el) return;
-      const heroText = 'Full-Stack Dev & Founder @ NeuroMoney.';
+      const heroText = 'Founder & CEO @ NeuroMoney LTD';
       if (prefersReducedMotion) {
         el.classList.remove('typewriter');
         el.textContent = heroText;
@@ -812,12 +812,12 @@ main { flex: 1; }
           if (i < heroText.length) i++;
           else {
             deleting = true;
-            setTimeout(tick, 1800);
+            setTimeout(tick, 2000);
             return;
           }
         }
         setTimeout(tick, deleting ? 45 : 85);
-      }
+      
       tick();
       window.addEventListener('load', function () {
         if (window.location.hash) {
