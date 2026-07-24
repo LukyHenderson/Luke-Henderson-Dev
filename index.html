@@ -7,6 +7,12 @@
 <meta content="Luke Henderson is a UK-based Software Developer and Businessman. Luke is also the founder & CEO of NeuroMoney LTD." name="description"/>
 <meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
 <link href="https://lukehenderson.net/" rel="canonical"/>
+<link href="/assets/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/assets/site.webmanifest" rel="manifest"/>
+<meta content="#1D4258" name="theme-color"/>
 <meta content="Luke Henderson" property="og:site_name"/>
 <meta content="Luke Henderson – NeuroMoney Founder &amp; CEO" property="og:title"/>
 <meta content="Luke Henderson is a UK-based Software Developer and Businessman. Luke is also the founder & CEO of NeuroMoney LTD." property="og:description"/>
@@ -264,8 +270,12 @@ main { flex: 1; }
       gap: 2.5rem;
       align-items: center;
     }
-    .hero-summary-card {
+    .hero-summary-title {
       margin-top: 2rem;
+    }
+
+    .hero-summary-card {
+      margin-top: 0;
       padding: 1.35rem 1.5rem;
     }
 
@@ -694,7 +704,7 @@ main { flex: 1; }
 </div>
 </aside>
 </div>
-<p class="section-title" style="margin-top: 10px;">Summary</p>
+<p class="section-title hero-summary-title">Summary</p>
 <section class="card hero-summary-card" aria-label="Luke Henderson summary" id="summary">
   <p>Luke Henderson is a software developer and the Founder of NeuroMoney LTD, having solo bootstrapped the project starting in April 2024. Luke has an MSc in Datascience and Artificial Intelligence from Newcastle University aswell as a Ba(hons) in Business Management from Northumbria University, having graduated in the summer of 2026. His unique journey blends a strong technical foundation with business acumen, having spent several years developing automation systems, web applications, and cloud-based solutions for a number of clients from the Data, Manufacturing and Health sectors. <!-- Professionally, Luke has worked with technologies like Python, FastAPI, MySQL, and cloud platforms such as Google Cloud, Azure, and DigitalOcean. Luke's development career started at Cleardata UK, where he spent a year following his time as a technician at Vocare &amp; TotallyGroup (now PHL Group). He then spent some time with Zynk, in a scale-up environment as the business migrated from desktop to cloud based solutions.--> The NeuroMoney project started in 2024 during Luke's time at Northumbria, as he, an adult with both ADHD-C and ASD, noticed a gap in the market for true neurodivergent-friendly financial support. <!-- Now Luke works full time as the CEO of NeuroMoney, continuing to build accessible, customizable, modular software solutions for the adult Neurodivergent community.--></p>
 </section>
@@ -795,7 +805,7 @@ main { flex: 1; }
       const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const el = document.getElementById('hero-typewriter-text');
       if (!el) return;
-      const heroText = 'Founder & CEO @ NeuroMoney LTD';
+      const heroText = 'Founder & CEO @ NeuroMoney LTD.';
       if (prefersReducedMotion) {
         el.classList.remove('typewriter');
         el.textContent = heroText;
@@ -817,7 +827,7 @@ main { flex: 1; }
           }
         }
         setTimeout(tick, deleting ? 45 : 85);
-      
+      }
       tick();
       window.addEventListener('load', function () {
         if (window.location.hash) {
