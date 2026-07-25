@@ -562,12 +562,12 @@ main { flex: 1; }
     .profile-top {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 1.05rem;
       margin-bottom: 1rem;
     }
     .avatar {
-      width: 72px;
-      height: 72px;
+      width: 86px;
+      height: 86px;
       border-radius: 1rem;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -611,24 +611,26 @@ main { flex: 1; }
     opacity: 0.78;
     }
     .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(210px, 240px);
-      gap: 2rem;
-      align-items: start;
+      display: flow-root;
     }
+
     .about-text p {
       margin-top: 0;
       margin-bottom: 1rem;
       font-size: 0.98rem;
       color: #000000;
       line-height: 1.7;
-    opacity: 0.88;
+      opacity: 0.88;
     }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
     .about-figure {
-      width: 100%;
-      max-width: 240px;
-      margin: 0;
-      justify-self: end;
+      float: right;
+      width: min(34%, 250px);
+      margin: 0 0 1rem 2rem;
     }
 
     .about-figure img {
@@ -771,10 +773,10 @@ main { flex: 1; }
       .site-logo { min-width: auto; flex-direction: column; align-items: flex-start; gap: 0.15rem; }
     }
     @media (max-width: 780px) {
-      .about-grid { grid-template-columns: minmax(0, 1fr); }
       .about-figure {
-        max-width: 240px;
-        justify-self: center;
+        float: none;
+        width: min(72%, 240px);
+        margin: 0 auto 1.25rem;
       }
       .projects-grid { grid-template-columns: minmax(0, 1fr); }
       .logo-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -812,29 +814,104 @@ main { flex: 1; }
     }
 
     .press-section-card {
-      padding: 1.25rem;
+      padding: 1.5rem;
+    }
+
+    .press-carousel {
+      position: relative;
+      padding: 0 2.75rem;
+    }
+
+    .press-carousel-viewport {
+      overflow: hidden;
+      border-radius: 1rem;
     }
 
     .post-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 1.1rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+      padding: 0.2rem;
+    }
+
+    .post-grid::-webkit-scrollbar {
+      display: none;
     }
 
     .post-card {
+      flex: 0 0 calc((100% - 2.2rem) / 3);
+      min-width: 0;
+      scroll-snap-align: start;
       border: 1px solid var(--border);
       border-radius: 1rem;
-      padding: 1.25rem 1.25rem 1.15rem;
+      padding: 0.9rem;
       background: #ffffff;
       box-shadow: var(--shadow-sm);
-      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .press-carousel-btn {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 2.4rem;
+      height: 2.4rem;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--name-blue);
+      box-shadow: var(--shadow-sm);
+      font: inherit;
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .press-carousel-btn:hover,
+    .press-carousel-btn:focus-visible {
+      background: var(--hover-blue);
+      box-shadow: var(--shadow);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .press-carousel-btn--prev {
+      left: 0;
+    }
+
+    .press-carousel-btn--next {
+      right: 0;
+    }
+
+    .press-carousel-status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .post-card:hover,
     .post-card:focus-within {
+      background: var(--hover-blue);
       transform: translateY(-2px);
       box-shadow: var(--shadow);
-      border-color: rgba(29, 66, 88, 0.18);
+      border-color: rgba(29, 66, 88, 0.22);
     }
 
     .post-card-link {
@@ -855,9 +932,11 @@ main { flex: 1; }
     }
 
     .post-meta {
-      margin: 0 0 0.6rem;
-      font-size: 0.82rem;
-      line-height: 1.5;
+      margin: 0 0 0.45rem;
+      font-size: 0.68rem;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
       opacity: 0.78;
     }
 
@@ -875,9 +954,9 @@ main { flex: 1; }
     }
 
     .post-title {
-      margin: 0 0 0.5rem;
-      font-size: 1.05rem;
-      line-height: 1.35;
+      margin: 0 0 0.4rem;
+      font-size: 0.9rem;
+      line-height: 1.28;
     }
 
     .post-card-link:hover .post-title,
@@ -890,30 +969,59 @@ main { flex: 1; }
       width: 100%;
       height: auto;
       display: block;
-      margin: 0.75rem 0 0.9rem;
-      border-radius: 0.9rem;
+      margin: 0.6rem 0 0.7rem;
+      border-radius: 0.85rem;
       border: 1px solid var(--border);
       background: #ffffff;
       box-shadow: 0 10px 24px rgba(29, 66, 88, 0.07);
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
     }
 
     .post-thumb--contain {
-      object-fit: contain;
-      padding: 1rem;
+      object-fit: cover;
+      padding: 0;
     }
 
     .post-excerpt {
       margin: 0;
-      font-size: 0.92rem;
-      line-height: 1.65;
+      font-size: 0.8rem;
+      line-height: 1.48;
       opacity: 0.86;
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 920px) {
+      .post-card {
+        flex-basis: calc((100% - 1.1rem) / 2);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .press-section-card {
+        padding: 1.1rem;
+      }
+
+      .press-carousel {
+        padding: 0 2.35rem;
+      }
+
       .post-grid {
-        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+      }
+
+      .post-card {
+        flex-basis: 100%;
+      }
+
+      .post-meta {
+        white-space: normal;
+        font-size: 0.72rem;
+      }
+
+      .press-carousel-btn {
+        width: 2.15rem;
+        height: 2.15rem;
+        font-size: 1.25rem;
       }
     }
 
@@ -928,9 +1036,11 @@ main { flex: 1; }
 <p class="name">Luke Henderson</p>
 </a>
 <nav aria-label="Primary" class="main-nav">
+<a class="nav-link" href="#top" data-scroll-page-top>Summary</a>
 <a class="nav-link" href="#about">About</a>
 <a class="nav-link" href="#projects">Projects</a>
 <a class="nav-link" href="#experience">Experience</a>
+<a class="nav-link" href="#press">Press</a>
 </nav>
 </div>
 </header>
@@ -982,6 +1092,9 @@ main { flex: 1; }
 <p class="section-title">About</p>
 <div class="card">
 <div class="about-grid">
+<figure class="about-figure">
+<img alt="About Me Photo" loading="lazy" src="assets/portrait.jpg"/>
+</figure>
 <div class="about-text">
 <!--<p>I’m Luke Henderson, a Full Stack Developer and current MSc student in Data Science and Artificial Intelligence at Newcastle University, following my 2:1 in Business Management from Northumbria University. My journey blends a strong technical foundation with business acumen, having spent several years developing automation systems, web applications, and cloud-based solutions. Professionally, I’ve worked with technologies like Python, Django, FastAPI, MySQL, and cloud platforms such as Google Cloud, Azure, and DigitalOcean. My experience spans from building automated data pipelines at Cleardata UK to integrating REST and GraphQL APIs at Zynk Software, all while promoting DevOps and Agile best practices to deliver efficient, scalable solutions.</p>
 <p>Beyond work and study, I’m endlessly curious, a trait that spills into my love for ancient history. Whether it’s the strategies of Rome, the resilience of Carthage, or the mysticism of Ancient Briton, I find inspiration in how past civilizations shaped technology, trade, and governance. This fascination often influences how I approach problem-solving: strategic, structured, and deeply analytical.</p><p>A quieter passion of mine is cultivating bonsai trees and caring for succulent plants. I love building small <em>indoor penjing landscapes</em> inspired by ancient gardens, miniature scenes that balance structure, patience, and storytelling. It’s a hobby that blends my fascination with history (how spaces were designed to guide movement, mood, and meaning) with the craft of shaping living trees over time. In a funny way, it mirrors software through the thoughtful pruning, long-term planning, and small improvements that compound over time.</p>
@@ -989,11 +1102,8 @@ main { flex: 1; }
 <p>I’m currently developing <em>NeuroMoney</em>, a Fintech web application designed to empower neurodiverse adults in managing their finances. This passion project combines my technical expertise, entrepreneurial mindset, and commitment to inclusive, purpose-driven innovation. You can find this at <a href="https://neuromoney.io" rel="noopener" target="_blank">NeuroMoney.io</a>.</p>-->
 <p>Luke Henderson is a UK-based software developer and the founder and CEO of NeuroMoney LTD. His background combines technical delivery with formal business training, including an MSc in Data Science and Artificial Intelligence from Newcastle University and a BA (Hons) in Business Management from Northumbria University.</p>
 <p>His professional experience spans IT support, software automation, data integration, web application development and cloud infrastructure across the health, data-management and software sectors. Earlier roles included work with PHL Group organisations, ClearData UK and Zynk Software, where he contributed to technical support, automated data workflows, API integrations and the transition of business software toward cloud-based delivery.</p>
-<p>Luke began developing NeuroMoney as a bootstrapped project in April 2024, drawing on his lived experience of ADHD and autism and the difficulty of finding financial software designed around neurodivergent needs. NeuroMoney has since developed into a neurodivergent-first money and shopping management platform focused on reducing cognitive load through accessible, predictable and modular tools. As founder and CEO, Luke leads the company’s product direction, software development and wider business strategy.<p/>
+<p>Luke began developing NeuroMoney as a bootstrapped project in April 2024, drawing on his lived experience of ADHD and autism and the difficulty of finding financial software designed around neurodivergent needs. NeuroMoney has since developed into a neurodivergent-first money and shopping management platform focused on reducing cognitive load through accessible, predictable and modular tools. As founder and CEO, Luke leads the company’s product direction, software development and wider business strategy.</p>
 </div>
-<figure class="about-figure">
-<img alt="About Me Photo" loading="lazy" src="assets/portrait.jpg"/>
-</figure>
 </div>
 </div>
 </div>
@@ -1049,7 +1159,21 @@ main { flex: 1; }
   <div class="container">
     <p class="section-title">Press</p>
     <div class="card press-section-card">
-      <div class="post-grid">
+      <div class="press-carousel" data-press-carousel>
+        <button
+          class="press-carousel-btn press-carousel-btn--prev"
+          type="button"
+          aria-label="Show previous press articles"
+          aria-controls="press-carousel-track"
+        >‹</button>
+
+        <div class="press-carousel-viewport">
+          <div
+            class="post-grid"
+            id="press-carousel-track"
+            tabindex="0"
+            aria-label="Press articles carousel"
+          >
 
         <article class="post-card">
           <a
@@ -1108,7 +1232,7 @@ main { flex: 1; }
           >
             <p class="post-meta">
               <time datetime="2026-05-22">22 May 2026</time> •
-              <span class="post-tag">University Feature</span> • Newcastle University
+              <span class="post-tag">University</span> • NUSC
             </p>
             <h2 class="post-title">Newcastle University School of Computing Feature</h2>
             <img
@@ -1132,7 +1256,7 @@ main { flex: 1; }
           >
             <p class="post-meta">
               <time datetime="2026-03-15">15 March 2026</time> •
-              <span class="post-tag">Published Contribution</span> • The Neuro Directory
+              <span class="post-tag">Article</span> • The Neuro Directory
             </p>
             <h2 class="post-title">The Quiet Financial Strain of Neurodivergent Life</h2>
             <img
@@ -1147,6 +1271,21 @@ main { flex: 1; }
           </a>
         </article>
 
+          </div>
+        </div>
+
+        <button
+          class="press-carousel-btn press-carousel-btn--next"
+          type="button"
+          aria-label="Show next press articles"
+          aria-controls="press-carousel-track"
+        >›</button>
+
+        <p
+          class="press-carousel-status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
       </div>
     </div>
   </div>
@@ -1215,5 +1354,165 @@ main { flex: 1; }
       });
     })();
   </script>
+
+<script>
+  (function () {
+    const carousel = document.querySelector('[data-press-carousel]');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.post-grid');
+    const cards = Array.from(carousel.querySelectorAll('.post-card'));
+    const previousButton = carousel.querySelector('.press-carousel-btn--prev');
+    const nextButton = carousel.querySelector('.press-carousel-btn--next');
+    const status = carousel.querySelector('.press-carousel-status');
+
+    if (!track || cards.length === 0 || !previousButton || !nextButton) return;
+
+    const prefersReducedMotion =
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let currentIndex = 0;
+    let autoplayTimer = null;
+    let scrollTimer = null;
+
+    function visibleCardCount() {
+      if (window.matchMedia('(max-width: 640px)').matches) return 1;
+      if (window.matchMedia('(max-width: 920px)').matches) return 2;
+      return 3;
+    }
+
+    function maximumIndex() {
+      return Math.max(0, cards.length - visibleCardCount());
+    }
+
+    function announce() {
+      if (!status) return;
+      const first = currentIndex + 1;
+      const last = Math.min(cards.length, currentIndex + visibleCardCount());
+      status.textContent = `Showing press articles ${first} to ${last} of ${cards.length}.`;
+    }
+
+    function goTo(index, behaviour = 'smooth') {
+      const max = maximumIndex();
+      currentIndex = Math.min(Math.max(index, 0), max);
+      const targetCard = cards[currentIndex];
+
+      track.scrollTo({
+        left: targetCard.offsetLeft - track.offsetLeft,
+        behavior: behaviour
+      });
+
+      announce();
+    }
+
+    function next() {
+      const max = maximumIndex();
+      goTo(currentIndex >= max ? 0 : currentIndex + 1);
+    }
+
+    function previous() {
+      const max = maximumIndex();
+      goTo(currentIndex <= 0 ? max : currentIndex - 1);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer !== null) {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      if (prefersReducedMotion || cards.length <= visibleCardCount()) return;
+      autoplayTimer = window.setInterval(next, 5000);
+    }
+
+    function restartAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    previousButton.addEventListener('click', function () {
+      previous();
+      restartAutoplay();
+    });
+
+    nextButton.addEventListener('click', function () {
+      next();
+      restartAutoplay();
+    });
+
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('focusin', stopAutoplay);
+    carousel.addEventListener('focusout', function (event) {
+      if (!carousel.contains(event.relatedTarget)) startAutoplay();
+    });
+
+    track.addEventListener('scroll', function () {
+      window.clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(function () {
+        const trackLeft = track.getBoundingClientRect().left;
+        let nearestIndex = 0;
+        let nearestDistance = Infinity;
+
+        cards.forEach(function (card, index) {
+          const distance = Math.abs(card.getBoundingClientRect().left - trackLeft);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestIndex = index;
+          }
+        });
+
+        currentIndex = Math.min(nearestIndex, maximumIndex());
+        announce();
+      }, 100);
+    }, { passive: true });
+
+    window.addEventListener('resize', function () {
+      goTo(Math.min(currentIndex, maximumIndex()), 'auto');
+      restartAutoplay();
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopAutoplay();
+      else startAutoplay();
+    });
+
+    goTo(0, 'auto');
+    startAutoplay();
+  })();
+</script>
+
+
+<script>
+  (function () {
+    const summaryLink = document.querySelector('[data-scroll-page-top]');
+    if (!summaryLink) return;
+
+    summaryLink.addEventListener('click', function (event) {
+      event.preventDefault();
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'auto'
+          : 'smooth'
+      });
+
+      if (window.location.hash) {
+        window.history.replaceState(
+          null,
+          '',
+          window.location.pathname + window.location.search
+        );
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
