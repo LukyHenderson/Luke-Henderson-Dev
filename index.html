@@ -36,8 +36,8 @@
       "@type": "ProfilePage",
       "@id": "https://lukehenderson.net/#webpage",
       "url": "https://lukehenderson.net/",
-      "name": "Luke Henderson – NeuroMoney Founder &amp; CEO",
-      "description": "Luke Henderson is a UK-based Software Developer and Businessman. Luke is also the founder & CEO of NeuroMoney LTD.",
+      "name": "Luke Henderson – NeuroMoney Founder & CEO",
+      "description": "Luke Henderson is a UK-based software developer and businessman. Luke is also the founder and CEO of NeuroMoney LTD.",
       "inLanguage": "en-GB",
       "isPartOf": {
         "@id": "https://lukehenderson.net/#website"
@@ -53,7 +53,24 @@
       },
       "publisher": {
         "@id": "https://lukehenderson.net/#person"
-      }
+      },
+      "hasPart": {
+        "@id": "https://lukehenderson.net/#press-section"
+      },
+      "mentions": [
+        {
+          "@id": "https://www.gazettelive.co.uk/news/teesside-news/north-east-business-awards-2026-34325516"
+        },
+        {
+          "@id": "https://www.chroniclelive.co.uk/news/north-east-news/north-east-business-awards-2026-34325087"
+        },
+        {
+          "@id": "https://www.ncl.ac.uk/computing/news/item/student-nominated-startup-awards/"
+        },
+        {
+          "@id": "https://www.theneurodirectory.co.uk/news/the-quiet-financial-strain-of-neurodivergent-life/"
+        }
+      ]
     },
     {
       "@type": "Person",
@@ -72,8 +89,8 @@
         "contentUrl": "https://lukehenderson.net/assets/portrait.jpg",
         "caption": "Luke Henderson, software developer and founder of NeuroMoney"
       },
-      "jobTitle": "Software Developer and Founder of NeuroMoney",
-      "description": "UK-based Software Developer and Businessman.",
+      "jobTitle": "Founder and CEO of NeuroMoney",
+      "description": "UK-based software developer, businessman, and founder and CEO of NeuroMoney LTD.",
       "worksFor": {
         "@id": "https://neuromoney.io/#organization"
       },
@@ -102,7 +119,19 @@
       "sameAs": [
         "https://www.linkedin.com/in/luke-henderson-dev/",
         "https://github.com/LukyHenderson",
+        "https://www.crunchbase.com/person/luke-henderson-875b",
         "https://neuromoney.io/team.html#luke-henderson"
+      ],
+      "subjectOf": [
+        {
+          "@id": "https://www.gazettelive.co.uk/news/teesside-news/north-east-business-awards-2026-34325516"
+        },
+        {
+          "@id": "https://www.chroniclelive.co.uk/news/north-east-news/north-east-business-awards-2026-34325087"
+        },
+        {
+          "@id": "https://www.ncl.ac.uk/computing/news/item/student-nominated-startup-awards/"
+        }
       ]
     },
     {
@@ -123,6 +152,125 @@
       "url": "https://neuromoney.io/",
       "founder": {
         "@id": "https://lukehenderson.net/#person"
+      },
+      "sameAs": [
+        "https://www.crunchbase.com/organization/neuromoney-ltd"
+      ]
+    },
+    {
+      "@type": "WebPageElement",
+      "@id": "https://lukehenderson.net/#press-section",
+      "name": "Press",
+      "isPartOf": {
+        "@id": "https://lukehenderson.net/#webpage"
+      },
+      "mainEntity": {
+        "@id": "https://lukehenderson.net/#press-coverage"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://lukehenderson.net/#press-coverage",
+      "name": "Luke Henderson press coverage and published features",
+      "numberOfItems": 4,
+      "itemListOrder": "https://schema.org/ItemListOrderDescending",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "https://www.gazettelive.co.uk/news/teesside-news/north-east-business-awards-2026-34325516"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://www.chroniclelive.co.uk/news/north-east-news/north-east-business-awards-2026-34325087"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "https://www.ncl.ac.uk/computing/news/item/student-nominated-startup-awards/"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@id": "https://www.theneurodirectory.co.uk/news/the-quiet-financial-strain-of-neurodivergent-life/"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "NewsArticle",
+      "@id": "https://www.gazettelive.co.uk/news/teesside-news/north-east-business-awards-2026-34325516",
+      "headline": "NeuroMoney Founder Named Rising Star Finalist",
+      "url": "https://www.gazettelive.co.uk/news/teesside-news/north-east-business-awards-2026-34325516",
+      "datePublished": "2026-07-22",
+      "publisher": {
+        "@type": "Organization",
+        "name": "TeessideLive"
+      },
+      "about": {
+        "@id": "https://lukehenderson.net/#person"
+      },
+      "mentions": {
+        "@id": "https://neuromoney.io/#organization"
+      }
+    },
+    {
+      "@type": "NewsArticle",
+      "@id": "https://www.chroniclelive.co.uk/news/north-east-news/north-east-business-awards-2026-34325087",
+      "headline": "NeuroMoney Founder Luke Henderson Shortlisted for Rising Star Award",
+      "url": "https://www.chroniclelive.co.uk/news/north-east-news/north-east-business-awards-2026-34325087",
+      "datePublished": "2026-07-22",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ChronicleLive"
+      },
+      "about": {
+        "@id": "https://lukehenderson.net/#person"
+      },
+      "mentions": {
+        "@id": "https://neuromoney.io/#organization"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://www.ncl.ac.uk/computing/news/item/student-nominated-startup-awards/",
+      "headline": "Newcastle University School of Computing Founder Feature",
+      "url": "https://www.ncl.ac.uk/computing/news/item/student-nominated-startup-awards/",
+      "datePublished": "2026-05-22",
+      "publisher": {
+        "@type": "CollegeOrUniversity",
+        "name": "Newcastle University"
+      },
+      "about": {
+        "@id": "https://lukehenderson.net/#person"
+      },
+      "mentions": {
+        "@id": "https://neuromoney.io/#organization"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://www.theneurodirectory.co.uk/news/the-quiet-financial-strain-of-neurodivergent-life/",
+      "headline": "The Quiet Financial Strain of Neurodivergent Life",
+      "url": "https://www.theneurodirectory.co.uk/news/the-quiet-financial-strain-of-neurodivergent-life/",
+      "datePublished": "2026-03-15",
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Neuro Directory"
+      },
+      "author": {
+        "@id": "https://lukehenderson.net/#person"
+      },
+      "mentions": {
+        "@id": "https://neuromoney.io/#organization"
       }
     }
   ]
@@ -651,7 +799,125 @@ main { flex: 1; }
       #hero-typewriter-text.typewriter::after { content: ""; }
       .scroll-hint .chev { animation: none; }
     }
-  </style>
+  
+    /* Keep the Summary heading clear of the stacked profile card on small screens. */
+    .section-title.hero-summary-title {
+      margin-top: 2.25rem;
+    }
+
+    @media (max-width: 920px) {
+      .section-title.hero-summary-title {
+        margin-top: 2.75rem;
+      }
+    }
+
+    .press-section-card {
+      padding: 1.25rem;
+    }
+
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .post-card {
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem 1.25rem 1.15rem;
+      background: #ffffff;
+      box-shadow: var(--shadow-sm);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .post-card:hover,
+    .post-card:focus-within {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: rgba(29, 66, 88, 0.18);
+    }
+
+    .post-card-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .post-card-link:hover,
+    .post-card-link:focus-visible {
+      text-decoration: none;
+    }
+
+    .post-card-link:focus-visible {
+      outline: 2px solid rgba(29, 66, 88, 0.45);
+      outline-offset: 4px;
+      border-radius: 0.8rem;
+    }
+
+    .post-meta {
+      margin: 0 0 0.6rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      opacity: 0.78;
+    }
+
+    .post-tag {
+      display: inline-block;
+      padding: 0.12rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(29, 66, 88, 0.18);
+      background: var(--hover-blue);
+      color: var(--name-blue);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .post-title {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+
+    .post-card-link:hover .post-title,
+    .post-card-link:focus-visible .post-title {
+      color: var(--name-blue);
+      text-decoration: underline;
+    }
+
+    .post-thumb {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0.75rem 0 0.9rem;
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(29, 66, 88, 0.07);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .post-thumb--contain {
+      object-fit: contain;
+      padding: 1rem;
+    }
+
+    .post-excerpt {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      opacity: 0.86;
+    }
+
+    @media (max-width: 780px) {
+      .post-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -774,6 +1040,115 @@ main { flex: 1; }
     </div>
   </div>
 </section>
+
+<!-- Press Section -->
+<section class="section" id="press" aria-label="Luke Henderson press coverage">
+  <div class="container">
+    <p class="section-title">Press</p>
+    <div class="card press-section-card">
+      <div class="post-grid">
+
+        <article class="post-card">
+          <a
+            class="post-card-link"
+            href="https://www.gazettelive.co.uk/news/teesside-news/north-east-business-awards-2026-34325516"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p class="post-meta">
+              <time datetime="2026-07-22">22 July 2026</time> •
+              <span class="post-tag">Awards</span> • TeessideLive
+            </p>
+            <h2 class="post-title">NeuroMoney Founder Named Rising Star Finalist</h2>
+            <img
+              class="post-thumb post-thumb--contain"
+              src="https://neuromoney.io/images/teesside.jpg"
+              alt="TeessideLive coverage of NeuroMoney founder Luke Henderson being named a Rising Star Award finalist"
+              loading="lazy"
+            />
+            <p class="post-excerpt">
+              TeessideLive names NeuroMoney founder Luke Henderson as one of four Rising Star Award finalists at the 2026 North East Business Awards.
+            </p>
+          </a>
+        </article>
+
+        <article class="post-card">
+          <a
+            class="post-card-link"
+            href="https://www.chroniclelive.co.uk/news/north-east-news/north-east-business-awards-2026-34325087"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p class="post-meta">
+              <time datetime="2026-07-22">22 July 2026</time> •
+              <span class="post-tag">Awards</span> • ChronicleLive
+            </p>
+            <h2 class="post-title">Luke Henderson Shortlisted for Rising Star Award</h2>
+            <img
+              class="post-thumb post-thumb--contain"
+              src="https://neuromoney.io/images/chronicle.png"
+              alt="ChronicleLive coverage of NeuroMoney founder Luke Henderson being shortlisted for the Rising Star Award"
+              loading="lazy"
+            />
+            <p class="post-excerpt">
+              ChronicleLive features Luke Henderson among four nominees shortlisted for the Rising Star Award at the 2026 North East Business Awards.
+            </p>
+          </a>
+        </article>
+
+        <article class="post-card">
+          <a
+            class="post-card-link"
+            href="https://www.ncl.ac.uk/computing/news/item/student-nominated-startup-awards/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p class="post-meta">
+              <time datetime="2026-05-22">22 May 2026</time> •
+              <span class="post-tag">University Feature</span> • Newcastle University
+            </p>
+            <h2 class="post-title">Newcastle University School of Computing Founder Feature</h2>
+            <img
+              class="post-thumb post-thumb--contain"
+              src="https://neuromoney.io/images/newcastle-university.jpg"
+              alt="Newcastle University School of Computing feature on NeuroMoney founder Luke Henderson"
+              loading="lazy"
+            />
+            <p class="post-excerpt">
+              Newcastle University featured Luke Henderson, covering the UK StartUp Awards nomination and how his MSc supported NeuroMoney’s strategy and growth.
+            </p>
+          </a>
+        </article>
+
+        <article class="post-card">
+          <a
+            class="post-card-link"
+            href="https://www.theneurodirectory.co.uk/news/the-quiet-financial-strain-of-neurodivergent-life/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p class="post-meta">
+              <time datetime="2026-03-15">15 March 2026</time> •
+              <span class="post-tag">Published Contribution</span> • The Neuro Directory
+            </p>
+            <h2 class="post-title">The Quiet Financial Strain of Neurodivergent Life</h2>
+            <img
+              class="post-thumb post-thumb--contain"
+              src="https://neuromoney.io/images/neuro-directory.png"
+              alt="The Neuro Directory feature image for Luke Henderson’s published contribution"
+              loading="lazy"
+            />
+            <p class="post-excerpt">
+              Luke Henderson contributed a guest piece covering the hidden financial strain that can accompany neurodivergent life.
+            </p>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 <!-- Footer -->
 <footer>
